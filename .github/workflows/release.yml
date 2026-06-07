@@ -1,0 +1,29 @@
+name: release
+
+# Publishes @unifapi/sdk to npm when a GitHub Release is published.
+# Requires an NPM_TOKEN secret with publish access to the @unifapi scope.
+# (Left to a maintainer — the SDK source is generated and pushed by the
+# @unifapi/sdks tooling in the main monorepo.)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm install
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

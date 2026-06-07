@@ -1,0 +1,48 @@
+{
+  "name": "@unifapi/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the UnifAPI public-data API — one HTTP surface for KOL pricing, creator research, social listening, competitive intelligence, and market research.",
+  "keywords": [
+    "ai-agents",
+    "mcp",
+    "openapi",
+    "public-data",
+    "sdk",
+    "unifapi"
+  ],
+  "homepage": "https://unifapi.com/developers",
+  "bugs": {
+    "url": "https://github.com/unifapi-agent/unifapi-sdk-typescript/issues"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unifapi-agent/unifapi-sdk-typescript.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepack": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
